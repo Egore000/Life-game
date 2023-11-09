@@ -2,7 +2,9 @@ import pygame
 import sys
 import time 
 import config as cfg
+import random
 from tools import Screen, Cell, Surface
+
 
 # инициализация pygame
 pygame.init()
@@ -31,7 +33,7 @@ while True:
             y = y // Cell.SIZE * Cell.SIZE
             if Surface.X_MIN <= x <= Surface.X_MAX and Surface.Y_MIN <= y <= Surface.Y_MAX:
                 cells[(x, y)].status = 1
-                cells[(x, y)].color = Cell.COLOR[1]
+                cells[(x, y)].color = Cell.COLOR[random.choice(Cell.ALIVE)]
         
         if event.type == pygame.MOUSEBUTTONUP:
             flag = False
@@ -42,7 +44,7 @@ while True:
             while running:
                 count_alive = 0
                 cells, cells_prev = Cell.life(cells)
-              
+            
                 for cell in cells.values():
                     count_alive += cell.status
 

@@ -3,16 +3,18 @@ BACKGROUNG_COLOR = (0, 0, 0)
 CELL_COLOR = {
     0: BACKGROUNG_COLOR,
     1: (255, 255, 255),
-    2: (255, 0, 0)
+    2: (255, 0, 0),
+    3: (0, 100, 0)
 }
+
 CELL_SIZE = 10
 
 WIDTH = 640
 HEIGHT = 480
 
 X_MIN = 0
-X_MAX = WIDTH - CELL_SIZE
+X_MAX = WIDTH
 Y_MIN = 0
-Y_MAX = HEIGHT - CELL_SIZE
+Y_MAX = HEIGHT
 
 FPS = 50

@@ -1,5 +1,6 @@
 import pygame
 import config as cfg 
+import random
 
 class Screen:
     WIDTH = cfg.WIDTH
@@ -9,6 +10,8 @@ class Screen:
 class Cell:
     SIZE = cfg.CELL_SIZE
     COLOR = cfg.CELL_COLOR
+    ALIVE = list(cfg.CELL_COLOR.keys())[1:]
+
     def __init__(self, x, y, status, cells):
         self.x = (x // Cell.SIZE) * Cell.SIZE
         self.y = (y // Cell.SIZE) * Cell.SIZE
@@ -39,7 +42,7 @@ class Cell:
             neighbours = len(cell.get_neigbours(cells))
             if cell.status == 0 and neighbours == 3:
                 cell.status = 1
-                cell.color = Cell.COLOR[1]
+                cell.color = Cell.COLOR[random.choice(Cell.ALIVE)]
             elif cell.status and neighbours in (2, 3):
                 pass
             elif cell.status and (neighbours not in (2, 3)):
