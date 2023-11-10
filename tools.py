@@ -37,19 +37,23 @@ class Cell:
         return nb
     
     def life(cells):
-        previous_condition = cells
+        changes = 0
+
         for cell in cells.values():
             neighbours = len(cell.get_neigbours(cells))
             if cell.status == 0 and neighbours == 3:
+                changes += 1
                 cell.status = 1
                 cell.color = Cell.COLOR[random.choice(Cell.ALIVE)]
             elif cell.status and neighbours in (2, 3):
                 pass
             elif cell.status and (neighbours not in (2, 3)):
+                changes += 1
                 cell.status = 0
                 cell.color = Cell.COLOR[0]
-        return cells, previous_condition
 
+        return cells, changes
+        
 class Surface:
     X_MIN = cfg.X_MIN
     X_MAX = cfg.X_MAX
